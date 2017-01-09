@@ -1,0 +1,28 @@
+﻿<div ng-controller="changePassCtrl as changepass">
+    <h2>Change Password</h2>
+    <div class="col-lg-4">
+        <form name="form" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="OldPass">Old Password</label>
+                <div class="controls">
+                    <input type="text" name="OldPass" ng-model="changepass.OldPass" id="OldPass" placeholder="" class="form-control" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="Pass">New Password</label>
+                <div class="controls">
+                    <input type="datetime" name="NewPass" ng-model="changepass.NewPass" id="NewPass" placeholder="" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button ng-click="changepass.saveuser()" class="btn btn-primary">Save</button>
+                <a href="#/" class="btn">Cancel</a>
+            </div>
+
+        </form>
+        <ul>
+            <li ng-repeat="e in changepass.errors">{{e}}</li>
+        </ul>
+    </div>
+</div>

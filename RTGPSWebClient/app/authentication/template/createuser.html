@@ -1,0 +1,27 @@
+﻿<div ng-controller="createUserCtrl as createuser">
+    <h2> Create User</h2>
+    <div class="col-lg-4">
+        <form name="form" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="Email">Email</label>
+                <div class="controls">
+                    <input required type="text" name="Email" ng-model="createuser.Email" id="Email" placeholder="" class="form-control" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="Pass">Password</label>
+                <div class="controls">
+                    <input required type="text" name="Pass" ng-model="createuser.Pass" id="Pass" placeholder="" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <!--<button ng-click="createuser.saveuser()" class="btn btn-primary">Save</button>-->
+                <button ng-click="form.$invalid ? alert('Please correct the form') : createuser.saveuser()" class="btn btn-primary">Save</button>
+
+                <a href="#/" class="btn">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+</div>

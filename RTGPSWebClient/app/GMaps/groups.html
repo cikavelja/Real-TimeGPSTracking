@@ -1,0 +1,63 @@
+﻿<div ng-controller="addGGroupsCtrl as addgroups">
+    <h2>New tracking group</h2>
+    <div class="col-lg-4">
+
+        <div class="control-group" ng-class="{error:form.email.$invalid}">
+            <label class="control-label" for="email">Find user by email</label>
+            <div class="controls">
+                <input type="email" name="email" ng-model="addgroups.adduser" class="form-control" id="email" placeholder="" required />
+            </div>
+        </div>
+        <div class="form-actions">
+            <button ng-click="addgroups.addusertogroup()" class="btn btn-primary">Save</button>
+
+        </div>
+        <p></p>
+        <!--<div class="form-group">
+            <label for="select" class="control-label">Selected users</label>
+            <div class="controls">
+                <ul ng-repeat="data in myData" class="nav nav-pills nav-stacked">
+                    <li>
+                        <button type="button" class="btn btn-default" data-toggle="modal"
+                                data-target="#basicModal">
+                            {{data}}
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>-->
+
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label for="select" class="control-label">My group</label>
+            <div class="controls">
+                <ul ng-repeat="data in addgroups.rec" class="nav nav-pills nav-stacked">
+                    <li>
+                        <a href="" ng-model="groupMembers" ng-click="addgroups.delid(data)" data-toggle="modal"
+                           data-target="#basicModal">{{data}}</a>
+                    </li>
+                    <!--<li><a href="" ng-model="groupMembers" >{{data}}</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+                    <h4 class="modal-title" id="myModalLabel">Warning!!!</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>Remove user from group?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addgroups.delete()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

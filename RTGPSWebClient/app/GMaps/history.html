@@ -1,0 +1,109 @@
+﻿<form name="historyform">
+    <div ng-controller="historyCtrl as history">
+
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Select user</div>
+                <div class="panel-body">
+                    <div class="control-group">
+                        <div class="controls">
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <select class="form-control" id="select" ng-model="history.ddlRecords" ng-options="record.Id as record.Name for record in history.Records"
+                                            ng-change="history.GetRecords()"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">For how many days</div>
+                <div class="panel-body">
+
+                    <div class="control-group">
+                        <div class="controls">
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <input type="number" ng-model="history.daysSelected" class="form-control" id="inputDays" placeholder="Number of days" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+
+                <div class="col-lg-6">
+                    <button ng-click="form.$invalid ? alert('Please correct the form') : history.query=''; history.reset()" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
+
+                    <p></p>
+                </div>
+                <div class="col-lg-4">
+
+
+                    <ul class="nav nav-pills pull-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                Sort <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                <li>
+                                    <div>
+                                        <a ng-click="history.sort('ConnectionId')">Connection</a>
+                                        <span ng-show="history.sort_order=='ConnectionId' && history.is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
+                                        <span ng-show="history.sort_order=='ConnectionId' && history.is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <a ng-click="history.sort('FromDate')">Date Started</a>
+                                        <span ng-show="history.sort_order=='FromDate' && history.is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
+                                        <span ng-show="history.sort_order=='FromDate' && history.is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <div ng-repeat="maps in history.items | filter:query" id="route_{{maps.RouteId}}" class="panel panel-default">
+
+                        <div class="panel-body">
+                            <p>
+                                <a ng-show="maps.ConnectionId!=null" href="#/trackdetails?conn={{maps.ConnectionId}}">{{maps.ConnectionId}}</a>
+                                <a ng-show="maps.ConnectionId!=null" href="#/trackdetails?conn={{maps.ConnectionId}}" target="_blank"><i class="glyphicon glyphicon-new-window"></i></a>
+
+                            </p>
+                            <p>{{maps.FromDate | date:'medium'}}</p>
+
+
+
+                        </div>
+
+
+                        <a ng-show="has_more()" ng-click="show_more()">Show more</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div my-mapa="" style="width: 700px; height: 450px;"></div>
+
+
+    </div>
+</form>
+

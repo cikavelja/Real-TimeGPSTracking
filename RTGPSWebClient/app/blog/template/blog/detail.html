@@ -1,0 +1,38 @@
+﻿<div ng-controller="editAddBlogCtrl as editadd">
+    <h2>{{action}} Blog </h2>
+
+    <div class="col-lg-4">
+        <form name="form" class="form-horizontal">
+            <div class="control-group" ng-class="{error:form.Name.$invalid}">
+                <label class="control-label" for="Name">Name</label>
+                <div class="controls">
+                    <input type="text" name="Name" class="form-control" ng-model="editadd.item.Name" id="Name" placeholder="" />
+                </div>
+            </div>
+            <div class="control-group" ng-class="{error:form.DueDate.$invalid}">
+                <label class="control-label" for="Created">Created</label>
+                <div class="controls">
+                    <input type="datetime" name="DueDate" class="form-control" ng-model="editadd.item.Created" id="Created" placeholder="" required />
+                </div>
+            </div>
+            <div class="control-group" ng-class="{error:form.Priority.$invalid}">
+                <label class="control-label" for="BlogBody">Body</label>
+                <div class="controls">
+                    <input type="text" name="BlogBody" class="form-control" ng-model="editadd.item.BlogBody" id="BlogBody" placeholder="" required />
+                </div>
+            </div>
+            <div class="control-group" ng-class="{error:form.Priority.$invalid}">
+                <label class="control-label" for="Creator">Creator</label>
+                <div class="controls">
+                    <input type="text" name="Creator" class="form-control" ng-model="editadd.item.Creator" id="Creator" placeholder="" required />
+                </div>
+            </div>
+            <div class="form-actions">
+                <button ng-click="form.$invalid ? alert('Please correct the form') : editadd.save()" class="btn btn-primary">{{action}}</button>
+                <!--<button ng-click="save()" class="btn btn-primary"><span>{{action}}</span></button>-->
+                <a href="#/blog" class="btn">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+﻿<div ng-controller="createBlogResponseCtrl as bres">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2><span class="label label-default">{{bres.ditem.Name}}</span></h2>
+            <h3><span class="label label-default pull-right">{{bres.ditem.Created | date:mediumDate}} by {{bres.ditem.Creator}}</span></h3>
+        </div>
+        <div class="panel-body">
+            <p>{{bres.ditem.BlogBody}}</p>
+
+            <div ng-repeat="reponse in bres.ditem.BResponses" class="panel panel-default">
+                <div class="panel-heading" id="response_{{reponse.ResponseId}}">
+                    <h2><span class="label label-default">{{reponse.Title}} </span></h2>
+                    <span class="label label-default pull-right">{{reponse.Created | date:mediumDate}} by {{reponse.Responder}}</span>
+                </div>
+                <div class="panel-body">
+                    <p>{{reponse.Content}}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <form name="form" class="form-horizontal">
+            <div class="control-group" ng-class="{error:form.Title.$invalid}">
+                <label class="control-label" for="Title">Title</label>
+                <div class="controls">
+                    <input type="text" name="Title" ng-model="bres.ditem.Title" class="form-control" id="Title" placeholder="" required />
+                </div>
+            </div>
+            <div class="control-group" ng-class="{error:form.Content.$invalid}">
+                <label class="control-label" for="Content">Content</label>
+                <div class="controls">
+                    <textarea name="Content" ng-model="bres.ditem.Content" class="form-control" rows="3" id="Content" placeholder="" required />
+                </div>
+            </div>
+            <div class="control-group" ng-class="{error:form.Responder.$invalid}">
+                <label class="control-label" for="Priority">Responder</label>
+                <div class="controls">
+                    <input type="text" name="Responder" ng-model="bres.ditem.Responder" class="form-control" id="Responder" placeholder="" required />
+                </div>
+            </div>
+            <div class="form-actions">
+                <button ng-click="form.$invalid ? alert('Please correct the form') : bres.save()" class="btn btn-primary">{{bres.action}}</button>
+                <a href="#/" class="btn">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+</div>

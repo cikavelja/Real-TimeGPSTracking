@@ -1,0 +1,82 @@
+﻿<div ng-controller="listBlogCtrl as listblog">
+    <form class="form-search">
+
+        <div class="input-append">
+            <div class="col-lg-4"> <input type="text" ng-model="listblog.query" class="form-control" placeholder="Search"></div>
+        </div>
+        <p></p>
+        <button ng-click="listblog.query=''; listblog.reset()" ng-disabled="!listblog.query" type="submit" class="btn btn-default">Reset</button>
+        <p></p>
+
+    </form>
+
+
+    <ul class="nav nav-pills pull-right">
+        <li><a href="#/addblog" class="btn btn-primary"><i class="glyphicon glyphicon-plus "></i> Add new post</a></li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                Sort <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <li>
+                    <div>
+                        <a ng-click="listblog.sort('Name')">Name</a>
+                        <span ng-show="listblog.sort_order=='Name' && listblog.is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
+                        <span ng-show="listblog.sort_order=='Name' && listblog.is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                        </
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a ng-click="listblog.sort('BlogBody')">Post</a>
+                        <span ng-show="listblog.sort_order=='BlogBody' && listblog.is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
+                        <span ng-show="listblog.sort_order=='BlogBody' && listblog.is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a ng-click="listblog.sort('Creator')">Creator</a>
+                        <span ng-show="listblog.sort_order=='Creator' && listblog.is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
+                        <span ng-show="listblog.sort_order=='Creator' && listblog.is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a ng-click="listblog.sort('Created')">Posted</a>
+                        <span ng-show="listblog.sort_order=='Created' && listblog.is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
+                        <span ng-show="listblog.sort_order=='Created' && listblog.is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+
+    <div ng-repeat="blog in listblog.items | filter:listblog.query" id="blog_{{blog.BlogId}}" class="panel panel-default">
+        <div class="panel-heading">
+            <h2><span class="label label-default">{{blog.Name}}</span></h2>
+            <h3><span class="label label-default pull-right">{{blog.Created | date:mediumDate}} by {{blog.Creator}}</span></h3>
+            <a class="btn btn-primary" ng-click="listblog.delete(blog.BlogId)"><i class="glyphicon glyphicon-remove"></i> Delete post</a>
+        </div>
+        <div class="panel-body">
+            <p ng-bind-html="listblog.renderHtml(blog.BlogBody)">Body</p>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p><a href="#/addblogresponse/{{blog.BlogId}}" class="btn btn-primary pull-right">Add Comment</a></p>
+                </div>
+            </div>
+            <div ng-repeat="reponse in blog.BResponses" class="panel panel-default">
+                <div class="panel-heading" id="response_{{reponse.ResponseId}}">
+                    <h2><span class="label label-default">{{reponse.Title}} </span></h2>
+                    <span class="label label-default pull-right">{{reponse.Created | date:mediumDate}} by {{reponse.Responder}}</span>
+                </div>
+                <div class="panel-body">
+                    <p>{{reponse.Content}}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
