@@ -123,21 +123,7 @@
   </header>
   <!--<div ng-view class="slide-animation"></div>-->
   <main>
-      <!-- app-illustrations -->
-        <section id="app-illustrations" class="">
-          <div class="tablet-landscape">
-            <img alt="shopify" src="Content/pic/shopify.svg">
-          </div>
-          <div class="phone-big">
-            <img alt="instacart" src="Content/pic/instacart.svg">
-          </div>
-          <!-- <div class="phone-small">
-            <img alt="postmates" src="Content/pic/postmates.svg">
-          </div>
-          <div class="tablet-portrait">
-            <img alt="asana" src="Content/pic/asana.svg">
-          </div> -->
-        </section>
+
     <div class="container">
       <section id="intro">
         <span class="message">
@@ -149,22 +135,34 @@
             <h2>A new way of tracking</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
-          <div class="col-sm-6">
-
+          <!-- app-illustrations -->
+          <section id="app-illustrations" class="">
+            <div class="tablet-landscape">
+              <img alt="shopify" src="Content/pic/shopify.svg">
+            </div>
+            <div class="phone-big">
+              <img alt="instacart" src="Content/pic/instacart.svg">
+            </div>
+            <!-- <div class="phone-small">
+            <img alt="postmates" src="Content/pic/postmates.svg">
           </div>
-        </div>
+          <div class="tablet-portrait">
+          <img alt="asana" src="Content/pic/asana.svg">
+        </div> -->
       </section>
-
-      <div id="content" ng-view></div>
     </div>
-  </main>
+  </section>
 
-  <footer>
-    <div class="container">
-      <ul>
-        <li>Copyright info </li>
-      </ul>
-    </div>
-  </footer>
+  <div id="content" ng-view></div>
+</div>
+</main>
+
+<footer>
+  <div class="container">
+    <ul>
+      <li>Copyright info </li>
+    </ul>
+  </div>
+</footer>
 </body>
 </html>
