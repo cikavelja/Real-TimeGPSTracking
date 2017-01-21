@@ -1,4 +1,4 @@
-﻿<div ng-controller="listBlogCtrl as listblog">
+﻿<div ng-controller="listBlogCtrl as listblog" class="blog-panel">
     <form class="form-search">
 
         <div class="input-append">
@@ -11,10 +11,9 @@
     </form>
 
 
-    <ul class="nav nav-pills pull-right">
-        <li><a href="#/addblog" class="btn btn-primary"><i class="glyphicon glyphicon-plus "></i> Add new post</a></li>
+    <ul class="nav nav-pills pull-right list-blog-ctrl">
         <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+            <a class="" data-toggle="dropdown" aria-expanded="true" id="sort-post">
                 Sort <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
@@ -22,42 +21,44 @@
                 <li>
                     <div>
                         <a ng-click="listblog.sort('Name')">Name</a>
-                        <span ng-show="listblog.sort_order=='Name' && listblog.is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
-                        <span ng-show="listblog.sort_order=='Name' && listblog.is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                        <span ng-show="listblog.sort_order=='Name' && listblog.is_desc==true"><i class="caret"></i></span>
+                        <span ng-show="listblog.sort_order=='Name' && listblog.is_desc==false"><i class="caret caret-up"></i></span>
                         </
                     </div>
                 </li>
                 <li>
                     <div>
                         <a ng-click="listblog.sort('BlogBody')">Post</a>
-                        <span ng-show="listblog.sort_order=='BlogBody' && listblog.is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
-                        <span ng-show="listblog.sort_order=='BlogBody' && listblog.is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                        <span ng-show="listblog.sort_order=='BlogBody' && listblog.is_desc==true"><i class="caret"></i></span>
+                        <span ng-show="listblog.sort_order=='BlogBody' && listblog.is_desc==false"><i class="caret caret-up"></i></span>
                     </div>
                 </li>
                 <li>
                     <div>
                         <a ng-click="listblog.sort('Creator')">Creator</a>
-                        <span ng-show="listblog.sort_order=='Creator' && listblog.is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
-                        <span ng-show="listblog.sort_order=='Creator' && listblog.is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                        <span ng-show="listblog.sort_order=='Creator' && listblog.is_desc==true"><i class="caret"></i></span>
+                        <span ng-show="listblog.sort_order=='Creator' && listblog.is_desc==false"><i class="caret caret-up"></i></span>
                     </div>
                 </li>
                 <li>
                     <div>
                         <a ng-click="listblog.sort('Created')">Posted</a>
-                        <span ng-show="listblog.sort_order=='Created' && listblog.is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
-                        <span ng-show="listblog.sort_order=='Created' && listblog.is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                        <span ng-show="listblog.sort_order=='Created' && listblog.is_desc==true"><i class="caret"></i></span>
+                        <span ng-show="listblog.sort_order=='Created' && listblog.is_desc==false"><i class="caret caret-up"></i></span>
                     </div>
                 </li>
             </ul>
         </li>
+        <li><a href="#/addblog" class="btn" id="add-new-post"><i class="glyphicon glyphicon-plus "></i> Add new post</a></li>
     </ul>
 
 
     <div ng-repeat="blog in listblog.items | filter:listblog.query" id="blog_{{blog.BlogId}}" class="panel panel-default">
         <div class="panel-heading">
-            <h2><span class="label label-default">{{blog.Name}}</span></h2>
-            <h3><span class="label label-default pull-right">{{blog.Created | date:mediumDate}} by {{blog.Creator}}</span></h3>
-            <a class="btn btn-primary" ng-click="listblog.delete(blog.BlogId)"><i class="glyphicon glyphicon-remove"></i> Delete post</a>
+            <a class="" ng-click="listblog.delete(blog.BlogId)" id="blog-delete"> Delete post <i class="glyphicon glyphicon-remove"></i></a>
+            <hr class="blog-line">
+            <h2 class="blog-name">{{blog.Name}}</h2>
+            <span class="label label-default pull-right blog-date">{{blog.Created | date:mediumDate}} by {{blog.Creator}}</span>
         </div>
         <div class="panel-body">
             <p ng-bind-html="listblog.renderHtml(blog.BlogBody)">Body</p>
@@ -69,7 +70,7 @@
             <div ng-repeat="reponse in blog.BResponses" class="panel panel-default">
                 <div class="panel-heading" id="response_{{reponse.ResponseId}}">
                     <h2><span class="label label-default">{{reponse.Title}} </span></h2>
-                    <span class="label label-default pull-right">{{reponse.Created | date:mediumDate}} by {{reponse.Responder}}</span>
+                    <span class="label label-default pull-right blog-date">{{reponse.Created | date:mediumDate}} by {{reponse.Responder}}</span>
                 </div>
                 <div class="panel-body">
                     <p>{{reponse.Content}}</p>

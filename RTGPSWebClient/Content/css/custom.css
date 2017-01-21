@@ -16,11 +16,8 @@ body:not([id]) {
 a {
   cursor: pointer;
 }
-#blog_2 h2, #blog_2 h3 {
-  display: inline;
-}
 h2 {
-    font-size: 5rem;
+    font-size: 18px;
     color: #007AD1;
     text-shadow: 1px 1px #ffffff;
 }
@@ -178,7 +175,7 @@ cursor: pointer;
 .dropdown-menu a:focus,
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-    color: #24b47e;
+    color: #42b129;
     text-decoration: none;
     background-color: transparent;
 }
@@ -227,6 +224,11 @@ line-height: 50px;
 
 .caret {
   margin-left: 0.5rem;
+  color: #337ab7;
+}
+.caret.caret-up {
+    border-top: 0;
+    border-bottom: 4px dashed;
 }
 #login-box {
   margin-right: -40px;
@@ -269,10 +271,6 @@ line-height: 50px;
   box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
 }
 
-.dropdown-toggle > .caret {
-  display: none;
-}
-
 /*
 main content
 */
@@ -288,7 +286,6 @@ main {
 
   }
   #intro h2 {
-    font-size: 5rem;
     color: #ffffff;
     text-shadow: 1px 1px #007AD1;
   }
@@ -526,4 +523,77 @@ form .btn {
 }
 .form-actions {
   padding-top: 15px;
+}
+/*
+  BLOG
+*/
+.blog-panel .panel {
+background-color: transparent;
+}
+.blog-panel .panel-default{
+  border: none;
+  background-color: rgba(0,0,0,.03);
+  box-shadow: inset 0 4px 7px 1px #fff,inset 0 -5px 20px rgba(173,186,204,.25),0 2px 6px rgba(0,21,64,.14),0 10px 20px rgba(0,21,64,.05);
+}
+#blog_2 h2 {
+  margin: 0;
+  width: 80%;
+  display: inline;
+}
+h2.blog-name {
+  font-size: 30px;
+  clear: both;
+}
+#blog_2 h3 {
+  display: inline;
+}
+.blog-date {
+  line-height: normal;
+  margin: 0;
+  padding: 2px;
+  width: 20%;
+  display: inline;
+}
+.panel-default > .panel-heading {
+  background-color: rgba(255,255,255,.9);
+}
+.list-blog-ctrl {
+
+}
+.list-blog-ctrl #add-new-post {
+  background: #42b129;
+  color: #ffffff;
+  padding: 5px 10px;
+  margin-top: 7px;
+  margin-right: 15px;
+}
+.list-blog-ctrl #add-new-post:hover {
+  background: #337ab7;
+}
+.list-blog-ctrl a#sort-post {
+  line-height: 1.42857143;
+}
+.list-blog-ctrl a#sort-post:hover,
+.list-blog-ctrl a#sort-post:hover .caret,
+.nav .open > a#sort-post,
+.nav .open > a#sort-post .caret {
+  background: transparent;
+  color: #42b129;
+}
+.list-blog-ctrl a#sort-post .caret {
+  border-top: 7px dashed;
+  border-top: 7px solid \9;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+}
+#blog-delete {
+  float: right;
+}
+#blog-delete:hover,
+#blog-delete:hover .glyphicon {
+  color: red;
+  text-decoration: none;
+}
+#blog-delete .glyphicon {
+  top: 3px;
 }

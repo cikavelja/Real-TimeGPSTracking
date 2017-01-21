@@ -1,8 +1,8 @@
-﻿<div ng-controller="createBlogResponseCtrl as bres">
+﻿<div ng-controller="createBlogResponseCtrl as bres" class="blog-panel">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h2><span class="label label-default">{{bres.ditem.Name}}</span></h2>
-            <h3><span class="label label-default pull-right">{{bres.ditem.Created | date:mediumDate}} by {{bres.ditem.Creator}}</span></h3>
+            <span class="label label-default pull-right blog-date">{{bres.ditem.Created | date:mediumDate}} by {{bres.ditem.Creator}}</span>
         </div>
         <div class="panel-body">
             <p>{{bres.ditem.BlogBody}}</p>
@@ -10,7 +10,7 @@
             <div ng-repeat="reponse in bres.ditem.BResponses" class="panel panel-default">
                 <div class="panel-heading" id="response_{{reponse.ResponseId}}">
                     <h2><span class="label label-default">{{reponse.Title}} </span></h2>
-                    <span class="label label-default pull-right">{{reponse.Created | date:mediumDate}} by {{reponse.Responder}}</span>
+                    <span class="label label-default pull-right blog-date">{{reponse.Created | date:mediumDate}} by {{reponse.Responder}}</span>
                 </div>
                 <div class="panel-body">
                     <p>{{reponse.Content}}</p>
