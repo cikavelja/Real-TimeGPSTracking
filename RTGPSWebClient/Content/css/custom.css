@@ -535,7 +535,7 @@ background-color: transparent;
   background-color: rgba(0,0,0,.03);
   box-shadow: inset 0 4px 7px 1px #fff,inset 0 -5px 20px rgba(173,186,204,.25),0 2px 6px rgba(0,21,64,.14),0 10px 20px rgba(0,21,64,.05);
 }
-#blog_2 h2 {
+.blog-panel h2 {
   margin: 0;
   width: 80%;
   display: inline;

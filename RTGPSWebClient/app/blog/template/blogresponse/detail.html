@@ -1,7 +1,7 @@
 ﻿<div ng-controller="createBlogResponseCtrl as bres" class="blog-panel">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h2><span class="label label-default">{{bres.ditem.Name}}</span></h2>
+            <h2 class="blog-name">{{bres.ditem.Name}}</h2>
             <span class="label label-default pull-right blog-date">{{bres.ditem.Created | date:mediumDate}} by {{bres.ditem.Creator}}</span>
         </div>
         <div class="panel-body">
